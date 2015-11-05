@@ -1,3 +1,4 @@
+"Use strict";
 /********************************************************
 *Name: Inverted Index.
 *Description:  Extending the String Class (Checkpoint Two)
@@ -9,8 +10,9 @@
  * @return {[boolean]} [returns true if a vowel is found else false]
  */
 String.prototype.hasVowels = function() {
-    var regex = /[aeiou]/;
-    return regex.test(this);
+    var regex = /[aeiou]/,
+        str = this;
+        return regex.test(this);
 };
 
 /**
@@ -18,52 +20,58 @@ String.prototype.hasVowels = function() {
  * @return {[string]} [returns a string with all its characters in upper case]
  */
 String.prototype.toUpper = function() {
-
+    var str = this;
+    return str.replace(/[a-z]/g, function(wordToConvert){
+        return String.fromCharCode(wordToConvert.charCodeAt() - 32);
+    });
 };
 
-//TODO
 /**
  * [function to convert a string to lowercase]
  * @return {[string]} [returns a string with all its characters in lower case]
  */
 String.prototype.toLower = function() {
-
+    var str = this;
+    return str.replace(/[A-Z]/g, function(wordToConvert){
+        return String.fromCharCode(wordToConvert.charCodeAt() + 32);
+    });
 };
 
-//TODO
 /**
  * [function to convert the first character of a string to uppercase]
  * @return {[string]} [returns a string with its first character in upper case]
  */
 String.prototype.ucFirst = function() {
-
+    var str = this;
+    return str.charAt(0).toUpper() + str.substr(1);
 };
 
-//TODO
 /**
  * [function to check if the string is a question]
  * @return {[boolean]} [returns true if the string ends with a question mark]
  */
-StringingClass.prototype.isQuestion = function() {
-
+String.prototype.isQuestion = function() {
+    var stringCheck = /[A-Za-z]\?/g,
+        str = this;
+        return stringCheck.test(str);
 };
 
-//TODO
 /**
  * [function to return a list of the words in a string]
  * @return {[array]} [returns a list of the words in a string as an array]
  */
 String.prototype.words = function() {
-
+    var str = this;
+    return str.split(/\s/);
 };
 
-//TODO
 /**
  * [function to return the number of words in a string]
  * @return {[number]} [returns the number of words in a string]
  */
 String.prototype.wordCount = function() {
-
+    var str = this;
+    return str.words().length;
 };
 
 //TODO
@@ -72,14 +80,16 @@ String.prototype.wordCount = function() {
  * @return {[string]} [returns the number of words in a stringp]
  */
 String.prototype.toCurrency = function() {
-
+    var regex = /(\d)(?=(\d{3})+(?!(\d)))/g,
+        str = this;
+        return str.replace(regex, '$1,');
 };
 
-//TODO
 /**
  * [function to return a number representation of a currency string]
  * @return {[number]} [returns a number representation of a currency string]
  */
 String.prototype.fromCurrency = function() {
-
+    var str = this;
+    return +str.replace(/\,/g, '');
 };
