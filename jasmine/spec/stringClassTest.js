@@ -9,12 +9,12 @@ describe("Tests the methods being added into the String class", function(){
     it("should return truthy", function(){
       expect('School'.hasVowels()).toBeTruthy();
       expect('I love Javascript'.hasVowels()).toBeTruthy();
-      //expect('Smmt'.hasVowels()).not.toBeTruthy();
+      expect('Smmt'.hasVowels()).not.toBeTruthy();
     });
 
     it("should return falsy", function(){
-      //expect('myth'.hasVowels()).toBeFalsy();
-      //expect('tryst'.hasVowels()).toBeFalsy();
+      expect('myth'.hasVowels()).toBeFalsy();
+      expect('tryst'.hasVowels()).toBeFalsy();
       expect('small'.hasVowels()).not.toBeFalsy();
     });
   });
